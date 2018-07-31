@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Observable } from '../../../node_modules/rxjs/Observable';
-import { JsonPipe } from '../../../node_modules/@angular/common';
 
 @Component({
   selector: 'page-home',
@@ -9,7 +7,7 @@ import { JsonPipe } from '../../../node_modules/@angular/common';
 })
 export class HomePage {
 
-  List: Array<any[]> = []
+  Lists:any;
 
   constructor(public navCtrl: NavController) {
 
@@ -23,8 +21,8 @@ export class HomePage {
 
   listaRecursos() {
     fetch(' https://jsonplaceholder.typicode.com/posts ')
-      .then(response => response.json())
-      .then(json => console.log(json))
+    .then(response => response.json())
+    .then(json => console.log(json))
   }
 
   criarRecursos() {
