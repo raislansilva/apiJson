@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { PlaceholderProvider } from '../../providers/placeholder/placeholder';
 
 @Component({
   selector: 'page-home',
@@ -7,10 +8,16 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  Lists:any;
+  lists: {};
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+        public navCtrl: NavController,
+        private placeholder: PlaceholderProvider
+  
+  ) { }
 
+  ionViewDidLoad(){
+     this.listaRecursos();
   }
 
   recursos() {
@@ -20,10 +27,11 @@ export class HomePage {
   }
 
   listaRecursos() {
-    fetch(' https://jsonplaceholder.typicode.com/posts ')
-    .then(response => response.json())
-    .then(json => console.log(json))
+     this.placeholder.listaRecurso()
+     .subscribe(recurso => this.lists = recurso)
+    
   }
+
 
   criarRecursos() {
     fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -40,6 +48,8 @@ export class HomePage {
       .then(response => response.json())
       .then(json => console.log(json))
   }
+
+
 
   atualizarRecurso() {
     fetch('https://jsonplaceholder.typicode.com/posts/1', {
@@ -58,6 +68,7 @@ export class HomePage {
       .then(response => response.json())
       .then(json => console.log(json))
   }
+  
 
   excluirRecurso() {
     fetch(' https://jsonplaceholder.typicode.com/posts/1 ', {
@@ -65,8 +76,9 @@ export class HomePage {
     })
   }
 
+
   filtraRecurso() {
-    fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
+    fetch('https://jsonplaceholder.typicode.com/posts?userId=2')
       .then(response => response.json())
       .then(json => console.log(json))
   }

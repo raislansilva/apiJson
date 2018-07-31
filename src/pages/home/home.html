@@ -9,13 +9,23 @@
 <ion-content padding>
   <button ion-button (click)="recursos()">Click aqui</button>
   <br>
-  <button ion-button (click)="listaRecursos()">lista de recursos</button>
-  <br>
   <button ion-button (click)="criarRecursos()">criar recursos</button>
   <br>
   <button ion-button (click)="atualizarRecurso()">Atualizar recursos</button>
   <br>
   <button ion-button (click)="filtraRecurso()">Filtrar recursos</button>
+  <br>
+  <button ion-button (click)="excluirRecurso()">Excluir Recurso</button>
+
+
+  <ion-list *ngFor="let list of lists">
+    <ion-item>
+         <p> UserId: {{list.userId}}</p>
+         <p> id: {{list.id}}</p>
+         <h2>title: {{list.title}}</h2>
+    </ion-item>
+
+  </ion-list>
 
 
 </ion-content>
